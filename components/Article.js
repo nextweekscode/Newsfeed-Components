@@ -1,6 +1,6 @@
 /* This is the data we will be using to create our articles */
 /* Look over this data, then proceed to line 91*/
-import {gsap} from 'gsap'
+import { gsap } from 'gsap'
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -121,36 +121,40 @@ const mainContainer=document.querySelector('.articles')
 	const expandBtn = document.createElement('span')
 	const paraOne = document.createElement('p')
 	const paraTwo = document.createElement('p')
-	const paraThree = document.createElement('p')
+  const paraThree = document.createElement('p')
+  const paraEmpty = document.createElement('p')
 	expandBtn.className = 'expandButton'
 	artContainer.className = 'article'
 	artContainer.appendChild(titleOfArt)
 	artContainer.appendChild(dateOfArt)
 	artContainer.appendChild(paraOne)
 	artContainer.appendChild(paraTwo)
-	artContainer.appendChild(paraThree)
+  artContainer.appendChild(paraThree)
+  artContainer.appendChild(paraEmpty)
 	artContainer.appendChild(expandBtn)
 	mainContainer.appendChild(artContainer)
 	titleOfArt.textContent = dataObj.title
 	dateOfArt.textContent = dataObj.date
 	paraOne.textContent = dataObj.firstParagraph
 	paraTwo.textContent = dataObj.secondParagraph
-	paraThree.textContent = dataObj.thirdParagraph
-	artContainer.addEventListener('click', () => {
+  paraThree.textContent = dataObj.thirdParagraph
+  expandBtn.textContent = '+'
+  expandBtn.style.color = 'red'
+  expandBtn.style.fontSize = '.9rem'
+	expandBtn.addEventListener('click', () => {
 	artContainer.classList.toggle('article-open')
 	})
 	return artContainer
 	}
-	console.log(articleMarker(data))
-	console.log(data)
+
 	data.forEach(item => {
-	const newArt = articleMarker(item)
+	 articleMarker(item)
 	})
 	const ashtonArt = {
-	title: 'ashton',
+	title: 'Ashton',
 	date: 'Nov 4th 1985',
 	firstParagraph: "I was born",
-	secondParagraph: "Weren't we luck",
+	secondParagraph: "Weren't we lucky",
 	thirdParagraph: "I guess soooooooo"
 	}
   mainContainer.appendChild(articleMarker(ashtonArt))
