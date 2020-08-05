@@ -1,5 +1,6 @@
 /* This is the data we will be using to create our articles */
 /* Look over this data, then proceed to line 91*/
+import {gsap} from 'gsap'
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -111,3 +112,47 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+const mainContainer=document.querySelector('.articles')	
+	function articleMarker(dataObj){
+	const artContainer = document.createElement('div')
+	const titleOfArt = document.createElement('h2')
+	const dateOfArt = document.createElement('p')
+	const expandBtn = document.createElement('span')
+	const paraOne = document.createElement('p')
+	const paraTwo = document.createElement('p')
+	const paraThree = document.createElement('p')
+	expandBtn.className = 'expandButton'
+	artContainer.className = 'article'
+	artContainer.appendChild(titleOfArt)
+	artContainer.appendChild(dateOfArt)
+	artContainer.appendChild(paraOne)
+	artContainer.appendChild(paraTwo)
+	artContainer.appendChild(paraThree)
+	artContainer.appendChild(expandBtn)
+	mainContainer.appendChild(artContainer)
+	titleOfArt.textContent = dataObj.title
+	dateOfArt.textContent = dataObj.date
+	paraOne.textContent = dataObj.firstParagraph
+	paraTwo.textContent = dataObj.secondParagraph
+	paraThree.textContent = dataObj.thirdParagraph
+	artContainer.addEventListener('click', () => {
+	artContainer.classList.toggle('article-open')
+	})
+	return artContainer
+	}
+	console.log(articleMarker(data))
+	console.log(data)
+	data.forEach(item => {
+	const newArt = articleMarker(item)
+	})
+	const ashtonArt = {
+	title: 'ashton',
+	date: 'Nov 4th 1985',
+	firstParagraph: "I was born",
+	secondParagraph: "Weren't we luck",
+	thirdParagraph: "I guess soooooooo"
+	}
+  mainContainer.appendChild(articleMarker(ashtonArt))
+  
+	gsap.to(".articles", {rotation: 360, x: 100, duration: 6, delay: 6});
